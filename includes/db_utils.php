@@ -3,7 +3,7 @@
     function connectToDB(&$errorString)
     {
     	$dbhost = 'localhost';
-	    $dbuser = 'root@localhost';
+	    $dbuser = 'root';
 	    //$dbpass = '';
 	    $conn = mysql_connect($dbhost, $dbuser);
 	    if(! $conn )
