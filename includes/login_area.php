@@ -2,7 +2,7 @@
   <?php  
   if (isset($_SESSION['valid']) && $_SESSION['valid'] == true) 
   {
-    $inactive = 3 * 1 * 1;
+    $inactive = 60 * 60 * 1;
     if(time() - $_SESSION['timeout'] < $inactive) 
     {
         $_SESSION['timeout'] = time(); 
