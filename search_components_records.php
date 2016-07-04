@@ -66,6 +66,11 @@
               <div style="width:150px; display:inline-block"><p>Fin No.</p></div>
               <div style="width:430px; display:inline-block"><p><input class="contact" type="text" name="fin_no" value="" /></p></div>
             </div>
+              
+              <div>
+              <div style="width:150px; display:inline-block"><p>Seals</p></div>
+              <div style="width:430px; display:inline-block"><p><input class="contact" type="text" name="seals" value="" /></p></div>
+            </div>
 
             <div style="padding-left:150px;"><p style="padding-top: 15px"><input style="width:83px; height:27px;" class="submit" type="submit" name="search_components_submit" value="Submit" /></p></div>
           </form>

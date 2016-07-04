@@ -118,6 +118,7 @@
 	                    <th>Component Alternate Part No.</th>
 	                    <th>Fin No.</th>
 	                    <th>Effectivity</th>
+                        <th>Seals</th>
 	                    <th>Delete</th>
 	                    <th>Edit</th>
 	                </tr>
@@ -156,6 +157,14 @@
 					// $whereval .= " fin_no ='". $_POST['fin_no'] ."'";
 					$whereval .= getWhereConditionForString("fin_no", $_POST['fin_no']);
 				}
+                
+                if (!empty($_POST['seals'])) {
+					if (strlen($whereval) > 0) {
+						$whereval .= " AND";
+					}
+					// $whereval .= " fin_no ='". $_POST['fin_no'] ."'";
+					$whereval .= getWhereConditionForString("seals", $_POST['seals']);
+				}
 
 			    $sql = "SELECT * from `component_records`";
 				if (strlen($whereval) > 0) {
@@ -190,6 +199,7 @@
 						MCCRow['alternate_part_no'] = "<?php echo cleanString($r['alternate_part_no']) ?>";
 						MCCRow['fin_no'] = "<?php echo cleanString($r['fin_no']) ?>";
 						MCCRow['effectivity'] = "<?php echo cleanString($r['effectivity']) ?>";
+                        MCCRow['seals'] = "<?php echo cleanString($r['seals']) ?>";
 						MCCData.push(MCCRow);
 					</script>
 	            		<tr id="<?php echo $r['part_no']; ?>">
@@ -199,6 +209,7 @@
 	                        <td name = "alternate_part_no"><?php echo $r['alternate_part_no']; ?></td>
 	                        <td name = "fin_no"><?php echo $r['fin_no']; ?></td>
 	                        <td name = "effectivity"><?php echo $r['effectivity']; ?></td>	
+                            <td name = "seals"><?php echo $r['seals']; ?></td>
 	                        <td><a onclick="DeleteComponentRecordRow('<?php echo $r['part_no'];?>')">Delete</button></td>
 	                        <td><a onclick="EditComponentRecordRow(this)">Edit</button></td>
 	                    </tr>

@@ -1,5 +1,6 @@
 <?php
     include 'includes/headers.php';
+    include 'includes/login_check.php';
     include 'includes/db_utils.php';
 
     function getWhereConditionForString($dbFieldName, $comparisonValue)
@@ -256,7 +257,8 @@
 	    		`part_no` = "' . $_POST['part_no'] . '",
 	    		`alternate_part_no` = "' . $_POST['alternate_part_no'] . '",
 	    		`fin_no` = "' . $_POST['fin_no'] . '",
-	    		`effectivity` = "' . $_POST['effectivity'] . '"
+	    		`effectivity` = "' . $_POST['effectivity'] . '",
+                `seals` = "' . $_POST['seals'] . '"
 				WHERE part_no = "' . $_POST['part_no'] . '";';
 		//echo $sql;
 
@@ -284,12 +286,15 @@
 	    	`part_no`,
 	    	`alternate_part_no` ,
 	    	`fin_no`,
-	    	`effectivity`)
+	    	`effectivity`,
+            `seals`)
 	    	VALUES ("' . $_POST['component_name'] . '","'
 	    	. $_POST['part_no'] . '","'
 	    	. $_POST['alternate_part_no'] . '","'
 	    	. $_POST['fin_no'] . '","'
-	    	. $_POST['effectivity'] .'")';
+	    	. $_POST['effectivity'] .'","'
+            . $_POST['seals'] .'")';
+
 
 	    $retval = mysql_query( $sql, $conn );
 	    if(! $retval )

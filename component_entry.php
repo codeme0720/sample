@@ -72,6 +72,11 @@
                     <div style="width:150px; display:inline-block"><p>Effectivity</p></div>
                     <div style="width:430px; display:inline-block"><p><input class="contact" type="text" name="effectivity" value="" /></p></div>
                 </div>
+                
+                <div>
+                    <div style="width:150px; display:inline-block"><p>Seals</p></div>
+                    <div style="width:430px; display:inline-block"><p><input class="contact" type="text" name="seals" value="" /></p></div>
+                </div>
 
                 </div>
 
