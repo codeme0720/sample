@@ -112,6 +112,7 @@
 	    ?>
 				<table class="gridBlue" style="width:100%" border=1>
 	            	<tr>
+                        <th>Serial No.</th>
 	                    <th>Component Name</th>
 	                    <th>Component Part No.</th>
 	                    <th>Component Alternate Part No.</th>
@@ -177,7 +178,7 @@
 					$cleanStr = preg_replace("/,/", "\ |", $cleanStr);
 					return $cleanStr;
 				}
-
+                    $serial=1;
 				while($r=mysql_fetch_array($q))
 				{
 
@@ -192,6 +193,7 @@
 						MCCData.push(MCCRow);
 					</script>
 	            		<tr id="<?php echo $r['part_no']; ?>">
+                            <td name = "serial_no"><?php echo $serial; $serial++; ?></td>
 	                        <td name = "component_name"><?php echo $r['component_name']; ?></td>
 	                        <td name = "part_no"><?php echo $r['part_no']; ?></td>
 	                        <td name = "alternate_part_no"><?php echo $r['alternate_part_no']; ?></td>
