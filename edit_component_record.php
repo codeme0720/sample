@@ -71,6 +71,11 @@
 					<div style="width:150px; display:inline-block"><p>Effectivity</p></div>
 					<div style="width:430px; display:inline-block"><p><input class="contact" type="text" name="effectivity" value="<?php echo $_POST['effectivity']; ?>"/></p></div>
 				</div>
+                
+                <div>
+					<div style="width:150px; display:inline-block"><p>Seals</p></div>
+					<div style="width:430px; display:inline-block"><p><input class="contact" type="text" name="seals" value="<?php echo $_POST['seals']; ?>"/></p></div>
+				</div>
 
 	            <div style="padding-left:150px;"><p style="padding-top: 15px"><input style="width:83px; height:27px;" class="submit" type="submit" name="update_component_record_submit" value="Update" /></p></div>
 	        </form>
