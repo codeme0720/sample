@@ -329,12 +329,26 @@
 			$entered_while = true;
 			if($row['password'] == $_POST['password'])
 			{
+                if($_POST['username'] == 'admin')
+                {
+                $_SESSION['valid'] = true;
+				$_SESSION['timeout'] = time();
+				$_SESSION['username'] = $_POST['username'];
+				$_SESSION['read_access'] = $row['read_access'];
+				$_SESSION['write_access'] = $row['write_access'];
+                $_SESSION['admin_access'] = true;
+                header('Location: redirect.php?action=admin');
+                }
+                else
+                {
 				$_SESSION['valid'] = true;
 				$_SESSION['timeout'] = time();
 				$_SESSION['username'] = $_POST['username'];
 				$_SESSION['read_access'] = $row['read_access'];
 				$_SESSION['write_access'] = $row['write_access'];
+                $_SESSION['admin_access'] = false;
 				header('Location: redirect.php?action=succeed');
+                }
 			}
 			else
 				header('Location: login.php?username=' . $_POST['username'] . '&error=Wrong username or password');

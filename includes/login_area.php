@@ -5,9 +5,9 @@
     $inactive = 60 * 60 * 1;
     if(time() - $_SESSION['timeout'] < $inactive) 
     {
-        $_SESSION['timeout'] = time(); 
+        $_SESSION['timeout'] = time();
         echo '<div>Hello, ' . $_SESSION['username'] . '</div>';
-      echo '<div align="right"><a href="redirect.php?action=logout">Logout</a></div>';
+      echo '<div><a href="redirect.php?action=logout">Logout</a></div>';
     }
     else if((time() - $_SESSION['timeout'] > $inactive))
     {

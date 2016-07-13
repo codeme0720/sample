@@ -45,6 +45,11 @@
                 echo '<p class="lead">' . $msg . '</p>';
                 header('Refresh: 2; URL=index.php');
               }
+              else if ($_GET['action'] == 'admin') {
+                $msg = 'Admin Logged in successfully...';
+                echo '<p class="lead">' . $msg . '</p>';
+                header('Refresh: 2; URL=admin.php');
+              }
               else if ($_GET['action'] == 'timeover') {
                 session_unset();
                 session_destroy();
