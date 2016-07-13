@@ -86,7 +86,7 @@ $q=mysql_query($sql);
 			      die('Could not fetch data: ' . mysql_error());
 			    }
 
-     echo "<table><tr><th>Username</th><th>Password</th><th>Read_Access</th><th>Write_Access</th><th>Delete</th></tr>";
+     echo "<table><tr><th>Username</th><th>Password</th><th>Read_Access</th><th>Write_Access</th></tr>";
      // output data of each row
      while($row = mysql_fetch_array($q)) {
          echo "<tr><td>" . $row["username"]. "</td><td>" . $row["password"].  "</td><td>" . $row["read_access"]. "</td><td>" . $row["write_access"]. "</td></tr>";
