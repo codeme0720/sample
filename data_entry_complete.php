@@ -49,6 +49,7 @@
                 $msg = "Operation Successfully submitted";
                 if (isset($_GET["cf_sno"]) && $_GET["cf_sno"] != -1)
                   $msg .= "<br>C/F No. = " . $_GET["cf_sno"];
+                  header('Location: redirect.php?action=flight_entry_success');
               }
               else if($_GET["status"] == "failure")
               {

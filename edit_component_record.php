@@ -1,6 +1,7 @@
 <?php
     include 'includes/headers.php';
     include 'includes/login_check.php';
+    include 'includes/write_constraint.php';
     include 'includes/read_constraint.php';
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">

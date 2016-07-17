@@ -114,6 +114,7 @@
 	    ?>
 				<table class="gridBlue" style="width:100%" border=1>
 	            	<tr>
+                        <th>Serial No.</th>
 	                    <th>Aircraft Regn. No.</th>
 	                    <th>Flight Date</th>
 	                    <th>Station</th>
@@ -125,6 +126,7 @@
 	                    <th>ETD</th>
 	                    <th>ATD</th>
 	                    <th>Engg Delay</th>
+                        <th>FFOD</th>
 	                    <th>Snag</th>
 	                    <th>ATA Code</th>
 	                    <th>Delay Code</th>
@@ -189,6 +191,16 @@
 					}
 					$whereval .= " cf_expiry_date ='". $_POST['cf_expiry_date'] ."'";
 				}
+                
+                
+                if ($_POST['FFOD'] != -1) {
+					if (strlen($whereval) > 0) {
+						$whereval .= " AND";
+					}
+					$whereval .= " FFOD ='". $_POST['FFOD'] ."'";
+				}
+                
+                
 
 			    $sql = "SELECT * from `snagrecords`";
 				if (strlen($whereval) > 0) {
@@ -210,6 +222,8 @@
 					$cleanStr = preg_replace("/,/", "\ |", $cleanStr);
 					return $cleanStr;
 				}
+                
+                $count=1;
 
 				while($r=mysql_fetch_array($q))
 				{
@@ -229,6 +243,7 @@
 						MCCRow['etd'] = "<?php echo cleanString($r['etd']) ?>";
 						MCCRow['atd'] = "<?php echo cleanString($r['atd']) ?>";
 						MCCRow['engg_delay'] = "<?php echo cleanString($r['engg_delay']) ?>";
+                        MCCRow['FFOD'] = "<?php echo cleanString($r['FFOD']) ?>";
 						MCCRow['snag'] = "<?php echo cleanString($r['snag']) ?>";
 						MCCRow['ata_code'] = "<?php if($r['ata_code']==""){echo cleanString("-");} else {echo cleanString($r['ata_code']);} ?>";
 						MCCRow['delay_code'] = "<?php echo cleanString($r['delay_code']) ?>";
@@ -239,6 +254,7 @@
 						MCCData.push(MCCRow);
 					</script>
 	            		<tr id="<?php echo $r['sno']; ?>">
+                            <td name = "serial_no"><?php echo $count++; ?></td>
 	                        <td name = "aircraft_regno"><?php echo $r['aircraft_regno']; ?></td>
 	                        <td name = "entry_date"><?php echo $r['entry_date']; ?></td>
 	                        <td name = "station"><?php echo $r['station']; ?></td>
@@ -250,6 +266,7 @@
 	                        <td name = "etd"><?php if($r['etd']=="00:00:00"){echo "-";} else {echo $r['etd'];} ?></td>
 	                        <td name = "atd"><?php if($r['atd']=="00:00:00"){echo "-";} else {echo $r['atd'];} ?></td>
 	                        <td name = "engg_delay"><?php if($r['engg_delay']=="00:00:00"){echo "-";} else {echo $r['engg_delay'];} ?></td>
+                            <td name = "FFOD"><?php if($r['FFOD']=="-1"){echo "-";} else {echo $r['FFOD'];} ?></td>
 	                        <td name = "snag"><?php if($r['snag']==""){echo "-";} else {echo $r['snag'];} ?></td>
 	                        <td name = "ata_code"><?php if($r['ata_code']==""){echo "-";} else {echo $r['ata_code'];} ?></td>
 	                        <td name = "delay_code"><?php if($r['delay_code']==""){echo "-";} else {echo $r['delay_code'];} ?></td>

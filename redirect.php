@@ -77,7 +77,19 @@
                 echo '<p class="lead">' . $msg . '</p>';
                 header('Refresh: 2; URL=index.php');
               }
+                  
+                else if ($_GET['action'] == 'successful_update') {
+                $msg = 'Credentials updated Successfully';
+                echo '<p class="lead">' . $msg . '</p>';
+                header('Refresh: 2; URL=admin1.php');
+              }
               
+                  else if ($_GET['action'] == 'flight_entry_success') {
+                $msg = 'Flight Data Successfully Entered';
+                echo '<p class="lead">' . $msg . '</p>';
+                header('Refresh: 2; URL=data_entry.php');
+              }
+                  
             } else {
               header('Location: index.php');  
             }

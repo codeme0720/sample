@@ -114,6 +114,7 @@
 	    	`etd`,
 	    	`atd`,
 	    	`engg_delay`,
+            `FFOD`,
 	    	`snag`,'
 	    	. $ataCodeDatabaseKey
 	    	. $delayCodeDatabaseKey
@@ -133,6 +134,7 @@
 	    	. $_POST['etd'] .'","'
 	    	. $_POST['atd'] .'","'
 	    	. $_POST['engg_delay'] .'","'
+            . $_POST['FFOD'] .'","'
 	    	. $_POST['snag'] .'","'
 	    	. $ataCodeValue
 	    	. $delayCodeValue
@@ -176,6 +178,10 @@
 
     else if (isset($_POST['delete_component_record_action'])) 
 	{
+        if($_SESSION['write_access'])
+		{
+			
+		
 		$errorString;
    	    $conn = connectToDB($errorString);
 	    if (!$conn)
@@ -196,7 +202,36 @@
 	    mysql_close($conn);
 	    
 	    echo "success";
+        }
     }
+
+else if (isset($_POST['delete_component_record_action1'])) 
+	{
+			
+		
+		$errorString;
+   	    $conn = connectToDB($errorString);
+	    if (!$conn)
+	    {
+	      	echo $errorString;
+	   		return;
+	    }
+
+	    $sql = 'DELETE FROM `credentials` WHERE username = "' . $_POST['delete_component_record_action1'] . '";';
+
+	    $retval = mysql_query( $sql, $conn );
+	    if(! $retval )
+	    {
+	      //die('Could not enter data: ' . mysql_error());
+	    	echo "could not run query";
+	    	return;
+	    }
+	    mysql_close($conn);
+	    
+	    echo "success";
+        
+    }
+
 
     else if (isset($_POST['update_flight_record_submit'])) 
 	{
@@ -270,6 +305,34 @@
 	    
 	    entryComplete("success", -1, "", $conn);
 	}
+
+
+else if (isset($_POST['update_credential_record_submit'])) 
+	{
+		$errorString;
+	    $conn = connectToDB($errorString);
+	    if (!$conn)
+	    {
+	      entryComplete("failure", -1, $errorString, $conn);
+	    }
+
+	    $sql = 'UPDATE `credentials`
+	    		SET `username` = "' . $_POST['username'] . '",
+	    		`password` = "' . $_POST['password'] . '",
+	    		`read_access` = "' . $_POST['read_access'] . '",
+	    		`write_access` = "' . $_POST['write_access'] . '"
+				WHERE username = "' . $_POST['username'] . '";';
+		//echo $sql;
+
+	    $retval = mysql_query( $sql, $conn );
+	    if(! $retval )
+	    {
+	      entryComplete("failure", -1, "Could not enter data: " . mysql_error(), $conn);
+	    }
+	    
+        header('Location: redirect.php?action=successful_update');	
+    }
+
 
 	else if (isset($_POST['component_data_submit']))
 	{

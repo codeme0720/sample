@@ -20,6 +20,12 @@ function DeleteFlightRecordRow(sno)
 
 function DeleteComponentRecordRow(partno)
 {
+    
+   
+    
+        
+    
+    
     if (confirm("This row will be deleted. Press OK to confirm."))
     {
         var ajaxurl = 'utility.php',
@@ -36,7 +42,33 @@ function DeleteComponentRecordRow(partno)
                 alert(response);
         });
     }
-}
+    }
+
+
+
+function DeleteCredentialsRecordRow(username)
+{
+    if (confirm("This row will be deleted. Press OK to confirm."))
+    {
+        var ajaxurl = 'utility.php',
+        data =  {'delete_component_record_action1': username};
+        $.post(ajaxurl, data, function (response)
+        {
+
+            if(response == "success")
+            {
+                //alert(response);
+                 document.getElementById(username).style.display = 'none';
+            }
+            else
+                alert(response);
+        });
+    }
+    }
+
+
+
+
 
 function EditFlightRecordRow(dataElement)
 {
@@ -83,6 +115,32 @@ function EditComponentRecordRow(dataElement)
     var redirect = 'edit_component_record.php';
     $.redirectPost(redirect, rowData);
 }
+
+
+function EditCredentialsRecordRow(dataElement)
+{
+    var rowElement = (dataElement.parentNode).parentNode;
+    var dataElements = rowElement.children;
+    var childrenCount = dataElements.length; 
+    var rowData = {};
+
+    for(var i = 0; i < childrenCount; i++)
+    {
+        var key = dataElements[i].getAttribute("name");
+        var value = dataElements[i].innerHTML;
+        if(key && key.length > 0)
+        {
+            if(value == "-")
+                rowData[key] = "";
+            else
+                rowData[key] = value;
+        }
+    }
+    var redirect = 'edit_credential_record.php';
+    $.redirectPost(redirect, rowData);
+}
+
+
 
 // jquery extend function
 $.extend(

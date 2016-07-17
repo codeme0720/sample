@@ -24,9 +24,21 @@
 	  </div><!--close banner_slogan-->
       <div style="clear:both;"></div>
 
-      <?php
-      include 'includes/menubar.php';
-      ?>
+      
+      
+
+
+<div id="menubar">
+  <ul id="menu">
+    <li id="menuEntryHome"><a class="menubar-entry" href="admin.php">Home</a></li>
+   
+  </ul>
+</div><!--close menubar-->
+
+
+
+
+      
 
       <!-- Login Area -->
       <?php

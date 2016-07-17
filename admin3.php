@@ -1,4 +1,5 @@
 <?php
+  include 'includes/db_utils.php';
   include 'includes/headers.php';
   include 'includes/login_check.php';
     include 'includes/admin_constraint.php';
@@ -12,7 +13,8 @@
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
   <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
-
+    
+    
 <body onload="document.getElementById('menuEntryHome').className += 'current';">
   <div id="header_container">  
     <div id="header">
@@ -24,9 +26,12 @@
 	  </div><!--close banner_slogan-->
       <div style="clear:both;"></div>
 
-      <?php
-      include 'includes/menubar.php';
-      ?>
+     <div id="menubar">
+  <ul id="menu">
+    <li id="menuEntryHome"><a class="menubar-entry" href="admin.php">Home</a></li>
+   
+  </ul>
+</div><!--close menubar-->
 
       <!-- Login Area -->
       <?php
@@ -44,18 +49,13 @@
         <div class="content_item">
           <h2> Query Processed</h2>
             <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "mccairindia";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
+                $errorString;
+	    $conn = connectToDB($errorString);
+	    if (!$conn)
+	    {
+	      	echo $errorString;
+	   		return;
+	    }
 $username = $_POST['username'];
 $password = $_POST['password'];
 $read = $_POST['read_access'];
@@ -64,15 +64,19 @@ $write = $_POST['write_access'];
 
 $sql = "INSERT INTO `credentials`(`username`, `password`, `read_access`, `write_access`) VALUES ('$username','$password','$read','$write')";
 
-if ($conn->query($sql) === TRUE) {
+$q=mysql_query($sql,$conn);
+ if(! $q )
+			    {
+			      echo "User Already Exists";
+                    echo "<script type='text/javascript'>  window.location='admin.php'; </script>";			    
+                }
+else 
+{
     echo "New record created successfully";
-    header('Refresh: 4; URL=admin.php');
-} else {
-    echo "User Already Exists";
-    header('Refresh: 4; URL=admin.php');
-}
+                    echo "<script type='text/javascript'>  window.location='admin.php'; </script>";			    
+} 
 
-$conn->close();
+mysql_close($conn);
 ?>
             
             

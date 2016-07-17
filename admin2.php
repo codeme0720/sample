@@ -24,9 +24,13 @@
 	  </div><!--close banner_slogan-->
       <div style="clear:both;"></div>
 
-      <?php
-      include 'includes/menubar.php';
-      ?>
+     <div id="menubar">
+  <ul id="menu">
+    <li id="menuEntryHome"><a class="menubar-entry" href="admin.php">Home</a></li>
+   
+  </ul>
+</div><!--close menubar-->
+
 
       <!-- Login Area -->
       <?php
@@ -59,12 +63,12 @@
             </div>
               
               <div>
-              <div style="width:150px; display:inline-block"><p>Read_Access</p></div>
+              <div style="width:150px; display:inline-block"><p>Read Access</p></div>
               <div style="width:430px; display:inline-block"><p><input class="contact" type="num" name="read_access" required value=""/></p></div>
             </div>
               
               <div>
-              <div style="width:150px; display:inline-block"><p>Write_Access</p></div>
+              <div style="width:150px; display:inline-block"><p>Write Access</p></div>
               <div style="width:430px; display:inline-block"><p><input class="contact" type="num" name="write_access" required value=""/></p></div>
             </div>
 

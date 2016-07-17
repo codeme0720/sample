@@ -87,6 +87,19 @@
               <div style="width:150px; display:inline-block"><p>C/F Expiry date</p></div>
               <div style="width:430px; display:inline-block"><p><input class="contact" type="date" name="cf_expiry_date" value="" /></p></div>
             </div>
+              
+              
+            <div>
+            		<div style="width:150px; display:inline-block"><p>First Flight Of the Day</p></div>
+            		<div style="width:430px; display:inline-block;">
+                        <p><select name="FFOD">
+                            <option value="-1"></option>
+                            <option value="0">False</option>
+                            <option value="1">True</option>
+                        </select>
+                        </p>
+                    </div>
+            	</div>
 
             <div style="padding-left:150px;"><p style="padding-top: 15px"><input style="width:83px; height:27px;" class="submit" type="submit" name="search_submit" value="Submit" /></p></div>
           </form>

@@ -134,6 +134,19 @@
                     <div style="width:430px; display:inline-block"><p><input class="contact" type="text" name="engg_delay" size="5" value="" pattern="[0-9]([0-9]+):[0-5][0-9]" title="hh:mm"/>
                     <small>(entry format hh:mm )</small></p></div>
                 </div>
+                
+                
+                <div>
+            		<div style="width:150px; display:inline-block"><p>First Flight Of the Day</p></div>
+            		<div style="width:430px; display:inline-block;">
+                        <p><select name="FFOD">
+                            <option value="-1"></option>
+                            <option value="0">False</option>
+                            <option value="1">True</option>
+                        </select>
+                        </p>
+                    </div>
+            	</div>
 
             	<div>
             		<div style="width:150px; display:inline-block; vertical-align:top;"><p>Snag</p></div>
