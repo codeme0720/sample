@@ -154,6 +154,8 @@
 
 	else if (isset($_POST['delete_flight_record_action'])) 
 	{
+        if($_SESSION['write_access'])
+        {
 		$errorString;
    	    $conn = connectToDB($errorString);
 	    if (!$conn)
@@ -174,6 +176,7 @@
 	    mysql_close($conn);
 	    
 	    echo "success";
+        }
     }
 
     else if (isset($_POST['delete_component_record_action'])) 
@@ -260,6 +263,7 @@ else if (isset($_POST['delete_component_record_action1']))
 	    		`etd` = "' . $_POST['etd'] . '",
 	    		`atd` = "' . $_POST['atd'] . '",
 	    		`engg_delay` = "' . $_POST['engg_delay'] . '",
+                `FFOD` = "' . $_POST['FFOD'] . '",
 	    		`snag` = "' . $_POST['snag'] . '",
 	    		`ata_code` = "' . $_POST['ata_code'] . '",
 	    		`delay_code` = "' . $_POST['delay_code'] . '",

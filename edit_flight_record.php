@@ -1,6 +1,7 @@
 <?php
     include 'includes/headers.php';
     include 'includes/login_check.php';
+    include 'includes/write_constraint.php';
     include 'includes/read_constraint.php';
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
@@ -129,6 +130,19 @@
 					<div style="width:430px; display:inline-block"><p><input class="contact" type="text" name="engg_delay" size="5" pattern="[0-9]([0-9]+):[0-5][0-9]" title="hh:mm" value="<?php echo substr($_POST['engg_delay'],0,strlen($_POST['engg_delay']) - 3); ?>"/>
 					<small>(entry format hh:mm )</small></p></div>
 				</div>
+                
+                	<div>
+	            <div style="width:150px; display:inline-block"><p>FFOD</p></div>
+				<div style="width:430px; display:inline-block">
+					<p><select required name="status">
+						<option value="-1"></option>
+						<option value="0" <?php if($_POST['FFOD']=="0"){echo "selected";} ?>>False</option>
+						<option value="1" <?php if($_POST['FFOD']=="1"){echo "selected";} ?>>true</option>
+					</select></p>
+				</div>
+				</div>
+
+
 
 				<div>
 					<div style="width:150px; display:inline-block; vertical-align:top;"><p>Snag</p></div>
