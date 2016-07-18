@@ -134,10 +134,10 @@
                 	<div>
 	            <div style="width:150px; display:inline-block"><p>FFOD</p></div>
 				<div style="width:430px; display:inline-block">
-					<p><select required name="status">
+					<p><select required name="FFOD">
 						<option value="-1"></option>
 						<option value="0" <?php if($_POST['FFOD']=="0"){echo "selected";} ?>>False</option>
-						<option value="1" <?php if($_POST['FFOD']=="1"){echo "selected";} ?>>true</option>
+						<option value="1" <?php if($_POST['FFOD']=="1"){echo "selected";} ?>>True</option>
 					</select></p>
 				</div>
 				</div>
